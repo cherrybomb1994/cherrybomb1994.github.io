@@ -1,0 +1,2 @@
+涉及到sidebar的float布局，以及div盒子的横向排版
+图片盒子在float后横向排布，父div需要设置overflow:hidden; zoom:1;来包裹住所有float元素
