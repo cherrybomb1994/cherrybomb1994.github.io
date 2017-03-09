@@ -1,0 +1,122 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript</title>
+	<style type="text/css">
+	 span{
+	   background-color:red;
+	   margin:20px;
+	   color:white;
+	  
+	 }
+	</style>
+  </head>
+  <body>
+  <input type="text" id="input"/>
+  <br/>
+  <br/>
+  <button id="leftin">左侧入</button>
+  <button id="rightin">右侧入</button>
+  <br/>
+  <button  id="leftgo">左侧出</button>
+  <button  id="rightgo">右侧出</button>
+  <br/>
+  <br/>
+  <div id="block"></div>
+  <script>
+  function queue(){
+   this.datastore=[];
+   this.leftin=leftin;
+   this.rightin=rightin;
+   this.leftgo=leftgo;
+   this.rightgo=rightgo;
+ //  this.check=check;
+   this.paint=paint;
+
+  
+  function leftin(element){
+    this.datastore.unshift(element);
+	var block =document.createElement("span");
+	  block.id=this.datastore.length;
+	  document.getElementById("block").appendChild(block);
+	  document.getElementById(block.id).addEventListener("click", function(event){
+	  var num= event.target.id;
+	  var block=document.getElementById("block");
+	  block.removeChild(block.childNodes[num-1]);
+	
+	}
+	);
+	return this.datastore;
+  }
+  function rightin(element){
+    this.datastore.push(element);
+	var block =document.createElement("span");
+	  block.id=this.datastore.length;
+	  document.getElementById("block").appendChild(block);
+	  document.getElementById(block.id).addEventListener("click", function(event){
+	  var num= event.target.id;
+	  var block=document.getElementById("block");
+	  block.removeChild(block.childNodes[num-1]);
+	}
+	);
+	return this.datastore;
+  }
+  function leftgo(){
+    alert("删除的值为"+this.datastore[0]);
+	var block=document.getElementById("block");
+	block.removeChild(block.firstChild);
+  return this.datastore;
+  }
+  function rightgo(){
+    var len=this.datastore.length;
+    alert(this.datastore[len-1]);
+	var block=document.getElementById("block");
+	block.removeChild(block.lastChild);
+   return this.datastore;
+  }
+  function paint(){
+	  for(var i=0;i<this.datastore.length;i++){
+	    document.getElementById(i+1).innerHTML=this.datastore[i];
+	  }
+  }
+
+}
+
+  var init= function(){
+  
+ 
+  
+  var que=new queue;
+  document.getElementById("leftin").onclick=function(){
+      que.leftin(document.getElementById("input").value);
+	  que.paint();
+	  
+	  
+	}  
+  document.getElementById("rightin").onclick=function(){
+      que.rightin(document.getElementById("input").value);
+	  que.paint();
+  }
+  document.getElementById("leftgo").onclick=function(){
+      que.leftgo();
+	  que.paint();
+  }
+  document.getElementById("rightgo").onclick=function(){
+      que.rightgo();
+	  que.paint();
+  }
+  
+     document.getElementsByTagName("span").onclick=function(event){
+	 var block=document.getElementById("block");
+	 var num=event.target.id;
+	 block.removeChild(block.childNodes[num-1]);
+	
+    
+  }
+  }
+  init();
+  
+  </script>
+  </body>
+</html>
