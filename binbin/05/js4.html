@@ -11,6 +11,7 @@
 	   height:0px;
 	   display:block;
 	   float:left;
+           overflow:hidden;
 	 }
 	 
 	</style>
@@ -73,7 +74,7 @@
 	  else{
 	   father.appendChild(block);
 	  }
-	   document.getElementById(this.datastore.length).style.height=element+3+"px";
+	   document.getElementById(this.datastore.length).style.height=element+"px";
 	  document.getElementById(block.id).addEventListener("click", function(event){
 	  var num= event.target.id;
 	  var block=document.getElementById("block");
@@ -96,7 +97,7 @@
 	  block.id=this.datastore.length;
 	 block.innerHTML=document.getElementById("input").value;
 	  document.getElementById("block").appendChild(block);
-	   document.getElementById(this.datastore.length).style.height=element+3+"px";
+	   document.getElementById(this.datastore.length).style.height=element+"px";
 	 document.getElementById(block.id).addEventListener("click", function(event){
 	  var num= event.target.id;
 	  var block=document.getElementById("block");
