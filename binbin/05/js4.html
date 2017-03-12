@@ -11,13 +11,8 @@
 	   height:0px;
 	   display:block;
 	   float:left;
+	 }
 	 
-	   
-	 }
-	 div{
-	   
-	   height:120px;
-	 }
 	</style>
   </head>
   <body>
@@ -50,7 +45,7 @@
   function check(element){
     var reg=/^[1-9]\d*$|^0$/; 
     if(reg.test(element)==true){
-	  if(element>=10&&element<=100){
+	  if(element>=10&&element<100){
 	   return true;
 	  }
 	  else{
