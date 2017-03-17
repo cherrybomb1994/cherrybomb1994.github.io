@@ -1,0 +1,204 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_tree</title>
+<style>
+   .root {
+			display: flex;
+			padding: 20px;
+			width: 1000px;
+			height: 300px;
+			border: solid;
+			background-color:white;
+			margin: 100px auto;
+			margin-bottom: 10px;
+			justify-content: space-between;  
+		}
+		.child1 {
+			display: flex;
+			padding: 20px;
+			width: 450px;
+			height: 260px;
+			border: solid;
+			background-color:white;
+			justify-content: space-between;
+		}
+		.child2 {
+			display: flex;
+			padding: 20px;
+			width: 170px;
+			height: 220px;
+			border: solid;
+			background-color:white;
+			justify-content: space-between;
+		}
+		.child3 {
+			display: flex;
+			padding: 20px;
+			width: 35px;
+			height: 180px;
+			border: solid;
+			background-color:white;
+			justify-content: space-between;
+		}
+		button {
+		    width: 100x;
+			height: 50px;
+			margin: 50px;
+			
+		}
+	</style>
+</head>
+
+<body>
+<div class="root" id="root">
+<div class="child1">
+  <div class="child2">
+     <div class="child3">
+	 </div>
+	 <div class="child3">
+	 </div>
+  </div>
+  <div class="child2">
+     <div class="child3">
+	 </div>
+	 <div class="child3">
+	 </div>
+  </div>
+</div>
+<div class="child1">
+  <div class="child2">
+     <div class="child3">
+	 </div>
+	 <div class="child3">
+	 </div>
+  </div>
+  <div class="child2">
+     <div class="child3">
+	 </div>
+	 <div class="child3">
+	 </div>
+  </div>
+</div>
+</div> 
+<br/>
+<button id="pro">前序</button>
+<button id="mid">中序</button>
+<button id="last">后序</button>
+<script>
+
+//定义全局变量，否则调用会报错
+var divList=[];
+
+//定义一个对象，含3个排序方法
+function queue(){
+  
+  this.preOrder=preOrder;
+  this.inOrder=inOrder;
+  this.postOrder=postOrder;
+
+  //每种排序方法不用return数组，因为divList设置为全局变量了
+  //遍历结果写入了divList，后面绑定函数时可以直接调用
+ function preOrder(node) {
+	
+	if (node!==null) {
+		divList.push(node);
+		preOrder(node.firstElementChild);
+		preOrder(node.lastElementChild);
+	}
+
+   }
+
+function inOrder(node) {
+	
+	if (node! == null) {
+		inOrder(node.firstElementChild);
+		divList.push(node);
+		inOrder(node.lastElementChild);
+	}
+	
+}
+
+function postOrder(node) {
+	
+	if (node! == null) {
+		postOrder(node.firstElementChild);
+		postOrder(node.lastElementChild);
+		divList.push(node);
+	}
+	
+}
+
+}
+
+//具体操作
+var que=new queue;
+
+function init(){
+	
+document.getElementById("pro").onclick=function(){
+	
+   divList=[];   //每次点击事件开始要重置divList，否则会保留上一次排序结果
+   var root= document.getElementById("root");
+   que.preOrder(root);
+   
+   //开始改颜色
+   var i = 0;
+   divList[i].style.backgroundColor = "blue";
+   timer = setInterval(function () {
+		i++;
+		if (i < divList.length) {
+			divList[i-1].style.backgroundColor = "white";
+			divList[i].style.backgroundColor = "blue";
+		} else {
+			clearInterval(timer);
+			divList[divList.length-1].style.backgroundColor = "white";
+		}
+   },500)
+   
+   }
+
+
+document.getElementById("mid").onclick=function(){
+	divList=[];
+   var root= document.getElementById("root");
+   que.inOrder(root);
+   var i = 0;
+   divList[i].style.backgroundColor = "blue";
+   timer = setInterval(function () {
+		i++;
+		if (i < divList.length) {
+			divList[i-1].style.backgroundColor = "white";
+			divList[i].style.backgroundColor = "blue";
+		} else {
+			clearInterval(timer);
+			divList[divList.length-1].style.backgroundColor = "white";
+		}
+   },500)
+  
+}
+
+document.getElementById("last").onclick=function(){
+	divList=[];
+   var root= document.getElementById("root");
+   que.postOrder(root);
+   var i = 0;
+   divList[i].style.backgroundColor = "blue";
+   timer = setInterval(function () {
+		i++;
+		if (i < divList.length) {
+			divList[i-1].style.backgroundColor = "white";
+			divList[i].style.backgroundColor = "blue";
+		} else {
+			clearInterval(timer);
+			divList[divList.length-1].style.backgroundColor = "white";
+		}
+   },500)
+   
+}
+}
+init();
+</script>
+</body>
+</html>
