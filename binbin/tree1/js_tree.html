@@ -112,7 +112,7 @@ function queue(){
 
 function inOrder(node) {
 	
-	if (node! == null) {
+	if (node!== null) {
 		inOrder(node.firstElementChild);
 		divList.push(node);
 		inOrder(node.lastElementChild);
@@ -122,7 +122,7 @@ function inOrder(node) {
 
 function postOrder(node) {
 	
-	if (node! == null) {
+	if (node!== null) {
 		postOrder(node.firstElementChild);
 		postOrder(node.lastElementChild);
 		divList.push(node);
