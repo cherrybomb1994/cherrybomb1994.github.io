@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_tree</title>
+<style>
+   .root {
+			display: flex;
+			padding: 20px;
+			width: 1200px;
+			height: 300px;
+			border: solid;
+			background-color:white;
+			margin: 100px auto;
+			margin-bottom: 10px;
+					
+		}
+		.child1 {
+			display: flex;
+			padding: 20px;
+			width: 400px;
+			height: 240px;
+			border: solid;
+			background-color:white;
+			color:green;
+			
+		}
+		.child2 {
+			display: flex;
+			padding: 20px;
+			width: 80px;
+			height: 180px;
+			border: solid;
+			background-color:white;
+			color:red;
+			
+		}
+		.child3 {
+			display: flex;
+			padding: 5px;
+			width: 20px;
+			height: 120px;
+			border: solid;
+			background-color:white;
+			color:yellow;
+			
+		}
+		button {
+		    width: 100x;
+			height: 50px;
+			margin: 50px;
+			
+		}
+	</style>
+</head>
+
+<body>
+<div class="root" id="A">A
+<div class="child1" id="B">B
+<div class="child2" id="C">C<div class="child3" id="D">D</div><div class="child3" id="E">E</div></div>
+<div class="child2" id="F">F</div>
+<div class="child2" id="G">G<div class="child3" id="H">H</div><div class="child3" id="I">I</div></div>
+</div>
+
+<div class="child1" id="J">J
+<div class="child2" id="K">K<div class="child3" id="L">L</div><div class="child3" id="M">M</div></div>
+<div class="child2" id="N">N<div class="child3" id="O">O</div></div>
+<div class="child2" id="P">P<div class="child3" id="Q">Q</div><div class="child3" id="R">R</div></div>
+</div>
+<div class="child1" id="S">S
+<div class="child2" id="T">T<div class="child3" id="U">U</div><div class="child3" id="V">V</div></div>
+<div class="child2" id="W">W</div>
+</div>
+</div> 
+
+<button id="start">遍历</button>
+<input type="text" id="input"/><button id="check">查询</button>
+
+<script type="text/javascript" src="js_tree.js"></script>
+</body>
+</html>
