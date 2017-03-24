@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript</title>
+<style type="text/css">
+    #page{ 
+	  padding:100px;
+	}
+     body {
+      font-size: 25px;
+      font-family: 'Microsoft yahei';
+    }
+    .radio{
+	 display:inline;
+	 margin-right:100px;
+	 margin-left:20px;
+	}
+	.select{
+	 padding:20px 20px 20px 20px;
+	}
+	.list{
+	 padding-right:60px;
+	 margin-right:60px;
+	 margin-left:20px;
+	 height:30px;
+	 font-size: 25px;
+	}
+	#input{
+	height:30px;
+	width:260px;
+	}
+	
+	</style>
+  </head>
+  <body>
+  <div id="page">
+  <div class="radio">
+  <input type="radio" name="choose" id="student" checked/>在校生
+   </div>
+   <div class="radio">
+  <input type="radio" name="choose" id="nostudent"/>非在校生
+  </div>
+  <div class="select" id="school">
+  <span>学校</span>
+  <select name="local" class="list" id="select1">
+  <option value="init1">请选择</option>
+  <option value="beijing">北京</option>
+  <option value="shanghai">上海</option>
+  <option value="guangzhou">广州</option>
+  </select>
+  <select  name="school" class="list" id="select2">
+  <option value="init2">请选择</option>
+
+  </select>
+  </div>
+  <div class="select" id="job">
+  <span>就业</span>
+  <input type="text" id="input">
+  </div>
+  </div>
+  </body>
+  <script type="text/javascript" src="biaodan.js"></script>
+  </html>
