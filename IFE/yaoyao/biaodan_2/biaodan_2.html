@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript</title>
+<style type="text/css">
+	
+	 span{
+	  font-size:15px;
+	  margin:20px;
+	 }
+	 
+	  button{
+	   margin:20px;
+	   width:140px;
+	   height:50px;
+	   border-radius:15px;
+	   background-color:blue;
+	   color:white;
+	  }
+	  input{
+	   width:250px;
+	   height:50px;
+	   margin-left:30px;
+	   border-radius:10px;
+	  }
+	  p{
+	   color:gray;
+	   font-size:10px;
+	   margin-left:110px;
+	   margin-top:0px;
+	  }
+	  #password2{
+	  margin-left:3px;
+	  }
+	</style>
+  </head>
+  <body>
+  <span>名称</span>
+  <input type="text" maxlength="16" id="input"/>
+  <p id="alert_name">必填，长度为4~16个字符</p><br/>
+ <span>密码</span>
+  <input type="password"  id="password1"/>
+  <p id="alert_password1">请输入密码,6~10位，可包含数字与字母</p><br/>
+  <span>密码确认</span>
+  <input type="password"  id="password2"/>
+  <p id="alert_password2">请再次输入相同密码</p><br/>
+  <span>邮箱</span>
+  <input type="email" id="email"/>
+  <p id="alert_email">请输入邮箱</p><br/>
+  <span>手机</span>
+  <input type="text" id="telephone"/>
+  <p id="alert_telephone">请输入手机号</p><br/>
+  <button id="check">验证</button>
+  </body>
+  <script type="text/javascript" src="biaodan.js"></script>
+</html>
