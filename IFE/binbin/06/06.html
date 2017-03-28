@@ -1,0 +1,178 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript</title>
+	<style type="text/css">
+	span.select{
+	   background-color:red;
+	   color:blue;
+	   display:inline;
+	   
+	 }
+	 span.normal{
+	  background-color:red;
+	   margin:5px;
+	   color:white;
+	   display:block;
+	   float:left;
+	 }
+	 
+	</style>
+  </head>
+  <body>
+  <textarea id="input" rows="10" cols="50"></textarea>
+  <br/>
+  
+  <br/>
+  <button id="leftin">左侧入</button>
+  <button id="rightin">右侧入</button>
+  <br/>
+  <button  id="leftgo">左侧出</button>
+  <button  id="rightgo">右侧出</button>
+  <br/>
+  <br/>
+ <br/>
+  <input type="text" id="inputcheck" />
+   <button id="check" >查询</button>
+  <br/>
+  <br/>
+  <div id="block"></div>
+  
+  <script>
+  function queue(){
+   this.inputarray=[];
+   this.datastore=[];
+   this.leftin=leftin;
+   this.rightin=rightin;
+   this.leftgo=leftgo;
+   this.rightgo=rightgo;
+   this.check=check;
+   this.checkinput=checkinput;
+  
+  function check(){
+  this.inputarray = document.getElementById("input").value.split(/,|[\s]|[\n]|、/);
+   return this.inputarray;
+  } 
+  
+  
+  function leftin(element){
+  if(this.datastore.length<=60){
+    this.datastore.unshift(element);
+	var father=document.getElementById("block")
+	var block =document.createElement("span");
+	  block.id=this.datastore.length;
+	  block.innerHTML=element;
+	  block.className="normal";
+	  if(father.children[0]){
+	    father.insertBefore(block,father.children[0]);
+	  }
+	  else{
+	   father.appendChild(block);
+	  }
+	  document.getElementById(block.id).addEventListener("click", function(event){
+	  var num= event.target.id;
+	  var block=document.getElementById("block");
+	  block.removeChild(block.childNodes[num-1]);
+	
+	}
+	);
+	return this.datastore;
+	}
+	else{
+	 alert("队列长度已达60!");
+	}
+  }
+  function rightin(element){
+  
+  if(this.datastore.length<=60){
+    this.datastore.push(element);
+	
+	var block =document.createElement("span");
+	  block.id=this.datastore.length;
+	 block.innerHTML=element;
+	 block.className="normal";
+	  document.getElementById("block").appendChild(block);
+	 document.getElementById(block.id).addEventListener("click", function(event){
+	  var num= event.target.id;
+	  var block=document.getElementById("block");
+	  block.removeChild(block.childNodes[num-1]);
+	}
+	);
+	return this.datastore;
+	}
+	else{
+	alert("队列长度已达60！");
+	}
+  }
+  function leftgo(){
+    alert("删除的值为"+this.datastore[0]);
+	this.datastore.shift();
+	var block=document.getElementById("block");
+	block.removeChild(block.firstChild);
+  return this.datastore;
+  }
+  function rightgo(){
+    var len=this.datastore.length;
+    alert("删除的值为"+this.datastore[len-1]);
+	this.datastore.pop();
+	var block=document.getElementById("block");
+	block.removeChild(block.lastChild);
+   return this.datastore;
+  }
+  function sort(){
+    for(var i=0;i<this.datastore.length;i++){
+    for(var n=0;n<i;n++){
+	  if(this.datastore[i]<this.datastore[n]){
+	    
+	    var test = this.datastore[n];
+		this.datastore[n]=this.datastore[i];
+		this.datastore[i]=test;
+	  }
+	}
+	
+  } 
+  return this.datastore;
+  }
+  
+function checkinput(){
+    var input = document.getElementById("inputcheck").value;
+	var reg = new RegExp(input,"g");
+	for(var i=0;i<this.datastore.length;i++){
+	var text=document.getElementById(i+1).innerHTML;
+	text=text.replace(reg, "<span class='select'>" +input+ "</span>");
+	document.getElementById(i+1).innerHTML=text;
+	}
+  }
+  
+}
+  var init= function(){
+  var que=new queue;
+  document.getElementById("leftin").onclick=function(){
+     for(var i=0;i<que.check().length;i++){
+	    que.leftin(que.inputarray[i]);
+	 }
+	}  
+  document.getElementById("rightin").onclick=function(){
+   for(var i=0;i<que.check().length;i++){
+	    que.leftin(que.inputarray[i]);
+	 }
+  }
+  document.getElementById("leftgo").onclick=function(){
+      que.leftgo();
+	 
+  }
+  document.getElementById("rightgo").onclick=function(){
+      que.rightgo();
+	 
+  }
+  document.getElementById("check").onclick=function(){
+    que.checkinput();
+	}
+  }
+  
+  init();
+  
+  </script>
+  </body>
+</html>
