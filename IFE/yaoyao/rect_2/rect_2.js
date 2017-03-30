@@ -1,9 +1,9 @@
-var state = [4,4,0];
+var state = [4,4];
 var deg = 0;
 var x = 0;
 var y = 0;
 var go = function(element){
-	if(state[2]==0){
+	if(deg==0){
 		state[0]-=1;
 		if(state[0]<0){
 		state[0]=0;
@@ -13,7 +13,7 @@ var go = function(element){
 		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	   }
 	}
-	if(state[2]==1){
+	if(deg==90){
 		state[1]+=1;
 		if(state[1]>9){
 		state[1]=9;
@@ -23,7 +23,7 @@ var go = function(element){
 		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 		 }
 	}
-	if(state[2]==2){
+	if(deg==180){
 		state[0]+=1;
 		if(state[0]>9){
 		state[0]=9;
@@ -33,7 +33,7 @@ var go = function(element){
 		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 		}
 	}
-	if(state[2]==3){
+	if(deg==270){
 		state[1]-=1;
 		if(state[1]<0){
 		state[1]=0;
@@ -46,15 +46,24 @@ var go = function(element){
 }
 
 var right = function(){
-	state[2]=(state[2]+1)%4;
+	deg+=90;
+	if(deg>360){
+	deg-=360;
+	}
 }
 
 var left = function(){
-	state[2]=(state[2]+3)%4;
+	deg-=90;
+	if(deg<0){
+	deg+=360;
+	}
 }
 
 var back = function(){
-	state[2]=(state[2]+2)%4;
+	deg+=180;
+	if(deg>360){
+	deg-=360;
+	}
 }
 
 
