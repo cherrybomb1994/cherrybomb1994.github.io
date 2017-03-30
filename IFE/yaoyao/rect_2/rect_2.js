@@ -73,26 +73,14 @@ var init = function(){
 	}
 	document.getElementById("right").onclick=function(){
 		right();
-		deg = deg+90;
-		if(deg>360){
-			deg = deg-360;	
-		}
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("left").onclick=function(){
 		left();
-		deg = deg-90;
-		if(deg<0){
-			deg = deg+360;
-		}
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("back").onclick=function(){
 		back();
-		deg = deg+180;
-		if(deg>360){
-			deg = deg-360;
-		}
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("upyi").onclick=function(){
