@@ -1,49 +1,39 @@
-var state = [4,4];
 var deg = 0;
 var x = 0;
 var y = 0;
 var go = function(element){
+	var check = function(){
+	if(x<0){x=0;}
+	if(x>360){x=360;}
+	if(y<0){y=0;}
+	if(y>360){y=360};
+     }
+	 
 	if(deg==0){
-		state[0]-=1;
-		if(state[0]<0){
-		state[0]=0;
-	     }
-	   else{
-		   y-=40;
-		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
-	   }
+		  y-=40;
+		  check();
+		  element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
+	   
 	}
 	if(deg==90){
-		state[1]+=1;
-		if(state[1]>9){
-		state[1]=9;
-	     }
-		 else{
 		x+=40;
+		check();
 		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
-		 }
+		 
 	}
-	if(deg==180){
-		state[0]+=1;
-		if(state[0]>9){
-		state[0]=9;
-	      }
-        else{		  
+	if(deg==180){		  
 		y+=40;
+		check();
 		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
-		}
+		
 	}
 	if(deg==270){
-		state[1]-=1;
-		if(state[1]<0){
-		state[1]=0;
-	      }
-		else{
 		x-=40;
+		check();
 		element.style.transform = "translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 		  }
 	}
-}
+
 
 var right = function(){
 	deg+=90;
@@ -66,6 +56,12 @@ var back = function(){
 	}
 }
 
+var check = function(){
+	if(x<0){x=0;}
+	if(x>360){x=360;}
+	if(y<0){y=0;}
+	if(y>360){y=360};
+     }
 
 var init = function(){
 	document.getElementById("go").onclick=function(){
@@ -85,38 +81,46 @@ var init = function(){
 	}
 	document.getElementById("upyi").onclick=function(){
 		y-=40;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("rightyi").onclick=function(){
 		x+=40;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("leftyi").onclick=function(){
 		x-=40;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("downyi").onclick=function(){
 		y+=40;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("upyiturn").onclick=function(){
 		y-=40;
 		deg=0;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("rightyiturn").onclick=function(){
 		x+=40;
 		deg=90;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("leftyiturn").onclick=function(){
 		x-=40;
 		deg=270;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	document.getElementById("downyiturn").onclick=function(){
 		y+=40;
 		deg=180;
+		check();
 		document.getElementById("block").style.transform="translate("+x+"px,"+y+"px) rotate("+deg+"deg)";
 	}
 	
