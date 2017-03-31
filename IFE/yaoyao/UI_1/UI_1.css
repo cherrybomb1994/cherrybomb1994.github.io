@@ -1,0 +1,46 @@
+body{
+	height:150%;
+	width:150%;
+}
+p{
+	font-size:18px;
+}
+button#show{
+	width:200px;
+	height:100px;
+	margin:20px;
+	font-size:20px;
+	text-align:center;
+	background-color:#FFCCCC;
+	
+}
+div#float{
+	position:fixed;
+	border:1px solid #CCC;
+	line-height: 280px;
+	text-align:center;
+	font-size: 20px;
+	background-color:#9999FF;
+	overflow:hidden;
+	z-index:1000;
+	cursor: hand;
+}
+div#zhezhao{
+	width:150%;
+    height:150%;
+    background-color:#000;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    opacity:0.5;
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+button#close{
+	position:absolute;
+	width:60px;
+	height:30px;
+	top: 80%;
+	left: 80%;
+	
+}
