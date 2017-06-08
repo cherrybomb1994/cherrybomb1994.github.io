@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            margin-top: 10px;
+            vertical-align: bottom;
+        }
+        li {
+            display: inline-block;
+            margin-left: 5px;
+            width: 15px;
+            background-color: #E21519;
+            color: #FFFFFF;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list"></ul>
+    <button id="sort">sort</button>
+    <script>
+        var ase = document.getElementById("sort");
+        ase.onclick = function(){
+            var lis = document.getElementsByTagName('li');
+            //设置一个arr数组,用来存放每个li的高度
+            var arr = [];
+            for(var i = 0; i < lis.length; i++){
+                arr.push(lis[i].style.height);
+            }
+            //对所有的li的高度值进行冒泡升序排列
+            sort(arr);
+            //定义一个全局变量timer定时器
+            timer = setInterval(render,500);
+        }
+        //state数组,存放每一次比较的结果
+        var state = [];
+        //冒泡计数器,存放比较的总次数
+        var count1 = 0;
+        //冒泡排序(升序),将第i趟的第arr.length - i - 1次的比较结果都存放到state数组中
+        function sort(arr){
+            for(var i = 0; i < arr.length -1 ; i++){
+                for(var j = 0; j < arr.length - i - 1; j++){
+                    if(arr[j] > arr[j+1]){
+                        var temp = arr[j+1];
+                        arr[j+1] = arr[j];
+                        arr[j] = temp;
+                        count1++;
+                        state.push(arr.slice(0));
+                    }
+                }
+            }
+        }
+        //渲染计数器,初始值为0
+        var count2 = 0;
+        //将每一趟中的每一次比较都渲染到页面中
+        function render(){
+            var lis = document.getElementsByTagName('li');
+            var s = state.shift() || [];
+            //循环遍历li元素,给每一个li的高度分别设置为第i次比较后每一项的值
+            for(var i = 0; i < lis.length; i++){
+                lis[i].style.height = s[i];
+            }
+            //渲染计数器,每次渲染就加一
+            count2++;
+            if(count2 == count1){
+                clearInterval(timer);
+            }
+        }
+        (function init() {
+            var  input = document.getElementById("list");
+
+            for(var i = 0; i < 10; i++) {
+                var li =document.createElement("li");
+                li.style.height=(Math.floor(Math.random() * 90) + 10)+"px";
+                input.appendChild(li);
+
+            }
+        })();
+
+    </script>
+</body>
+</html>
